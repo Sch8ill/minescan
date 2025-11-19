@@ -46,7 +46,6 @@ func (c *conns) new(ip net.IP, port uint16) {
 	c.conns[addr.String()] = newConn(dataHandler)
 }
 
-// TODO: params?
 func (c *conns) state(ip *layers.IPv4, tcp *layers.TCP) (*conn, addr.Addr) {
 	c.mu.RLock()
 	defer c.mu.RUnlock()

@@ -129,7 +129,6 @@ func (m *ScanMetrics) ResErr() {
 	m.current.ResErr++
 }
 
-// TODO: not in sync with cleanup job?
 func (m *ScanMetrics) ConnExpired() {
 	m.current.ConnsExpired++
 }

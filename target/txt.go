@@ -18,7 +18,7 @@ type TXTInput struct {
 }
 
 // NewTXTInput creates a new TXTInput from the given file path.
-// TODO: implement excludes
+// TODO: implement excludes?
 func NewTXTInput(path string) (*TXTInput, error) {
 	f, err := os.Open(path)
 	if err != nil {
@@ -45,7 +45,6 @@ func (i *TXTInput) Target() (addr.Addr, bool) {
 
 	a, err := net.ResolveTCPAddr("tcp", i.scanner.Text())
 	if err != nil {
-		// TODO
 		log.Warn().Err(err).Msg("TXTInput")
 		return addr.Addr{}, true
 	}
@@ -60,7 +59,6 @@ func (i *TXTInput) Size() int {
 	return i.size
 }
 
-// TODO:
 // https://stackoverflow.com/questions/24562942/golang-how-do-i-determine-the-number-of-lines-in-a-file-efficiently
 func countTargets(path string) (int, error) {
 	f, err := os.Open(path)

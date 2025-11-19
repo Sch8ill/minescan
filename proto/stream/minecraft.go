@@ -89,8 +89,6 @@ func expectedSize(packet []byte) (int, error) {
 	copy(payload, packet)
 	buf := bytes.NewBuffer(payload)
 
-	//TODO
-	//size, err := binary.ReadUvarint(buf)
 	size, varintSize, err := readVarInt(buf)
 	if err != nil {
 		return 0, fmt.Errorf("read packet length: %w", err)

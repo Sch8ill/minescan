@@ -75,7 +75,7 @@ func start(conf *config) error {
 	}
 
 	cookieOven := cookie.NewSYNOven()
-	packetChan := make(chan []byte, 1000) // TODO: adjust size?
+	packetChan := make(chan []byte, 1000) // TODO: increase size?
 	controlPlane, err := conn.NewControlPlane(conf.SrcPort, conf.Proto, helloBuilder, cookieOven, etherBuilder, packetChan, responseChan)
 	if err != nil {
 		return err

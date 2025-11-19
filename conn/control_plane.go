@@ -215,7 +215,6 @@ func (p *ControlPlane) handleDataPacket(ip *layers.IPv4, tcp *layers.TCP) error 
 		return nil
 	}
 
-	//TODO: max payload size for connection
 	conn, addr := p.conns.state(ip, tcp)
 
 	done, err := conn.data().Add(tcp)
