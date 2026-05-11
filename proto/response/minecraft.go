@@ -2,6 +2,9 @@ package response
 
 import (
 	"bytes"
+	"fmt"
+	"os"
+	"strings"
 	"time"
 
 	"github.com/rs/zerolog/log"
@@ -60,9 +63,29 @@ func (h *MCHandler) handleResponse(res *Response) error {
 		return err
 	}
 
-	_, err = slp.NewResponse(rawSlpRes)
+	slpRes, err := slp.NewResponse(rawSlpRes)
 	if err != nil {
 		return err
+	}
+
+	// TODO: rm
+	log.Info().Msg(slpRes.Version.Name)
+	f, err := os.OpenFile("./servers.csv", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
+	if err != nil {
+		log.Warn().Err(err).Msg("open mc server file csv")
+		return nil
+	}
+
+	defer f.Close()
+
+	if _, err := f.WriteString(
+		fmt.Sprintf("%s, %d, %s, %d, %d, %d, %d, %s, %t, %t\n",
+			res.Addr.IP.String(), res.Addr.Port, slpRes.Version.Name,
+			slpRes.Version.Protocol, slpRes.Players.Online, slpRes.Players.Max,
+			len(slpRes.Players.Sample), strings.ReplaceAll(slpRes.Description.String(), "\n", " "),
+			slpRes.PreviewsChat, slpRes.EnforcesSecureChat,
+	)); err != nil {
+		log.Warn().Err(err).Msg("write mc server file csv")
 	}
 
 	return nil
