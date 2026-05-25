@@ -1,0 +1,38 @@
+# Minescan
+
+- [`cmd`](https://github.com/Sch8ill/minescan/tree/master/cmd):
+  - [`main.go`](https://github.com/Sch8ill/minescan/blob/master/cmd/main.go): Initialisierung
+  - [`config.go`](https://github.com/Sch8ill/minescan/blob/master/cmd/config.go): Konfiguration
+- [`conn`](https://github.com/Sch8ill/minescan/tree/master/conn):
+  - [`conn.go`](https://github.com/Sch8ill/minescan/blob/master/conn/conn.go): TCP-Verbindungsstruktur
+  - [`conns.go`](https://github.com/Sch8ill/minescan/blob/master/conn/conns.go): TCP-Verbindungsspeicher
+  - [`control_plane.go`](https://github.com/Sch8ill/minescan/blob/master/conn/control_plane.go): TCP-Verbindungslogik
+  - [`addr`](https://github.com/Sch8ill/minescan/tree/master/conn/addr):
+    - [`addr.go`](https://github.com/Sch8ill/minescan/blob/master/conn/addr/addr.go): TCP-Adresse
+- [`metrics`](https://github.com/Sch8ill/minescan/tree/master/metrics):
+  - [`metrics.go`](https://github.com/Sch8ill/minescan/blob/master/metrics/metrics.go): Scanstatistik
+- [`proto`](https://github.com/Sch8ill/minescan/tree/master/proto):
+  - [`ethernet.go`](https://github.com/Sch8ill/minescan/blob/master/proto/ethernet.go): Ethernetpaket
+  - [`proto.go`](https://github.com/Sch8ill/minescan/blob/master/proto/proto.go): Anwendungsprotokolle
+  - [`cookie`](https://github.com/Sch8ill/minescan/tree/master/proto/cookie):
+    - [`log4shell.go`](https://github.com/Sch8ill/minescan/blob/master/proto/cookie/log4shell.go): Log4Shell (LDAP) Cookie
+    - [`syn.go`](https://github.com/Sch8ill/minescan/blob/master/proto/cookie/syn.go): SYN (TCP) Cookie
+  - [`hello`](https://github.com/Sch8ill/minescan/tree/master/proto/hello):
+    - [`http.go`](https://github.com/Sch8ill/minescan/blob/master/proto/hello/http.go): HTTP-Paket
+    - [`ldap.go`](https://github.com/Sch8ill/minescan/blob/master/proto/hello/ldap.go): Log4Shell-Trigger
+    - [`minecraft.go`](https://github.com/Sch8ill/minescan/blob/master/proto/hello/minecraft.go): Minecraft-Paket
+  - [`response`](https://github.com/Sch8ill/minescan/tree/master/proto/response):
+    - [`minecraft.go`](https://github.com/Sch8ill/minescan/blob/master/proto/response/minecraft.go): Minecraft-Antwort-Prozess
+  - [`stream`](https://github.com/Sch8ill/minescan/tree/master/proto/stream):
+    - [`minecraft.go`](https://github.com/Sch8ill/minescan/blob/master/proto/stream/minecraft.go): Minecraft-Antwort-Empfangsspeicher
+- [`sender`](https://github.com/Sch8ill/minescan/tree/master/sender):
+  - [`custom.go`](https://github.com/Sch8ill/minescan/blob/master/sender/custom.go): Paketsendeprozess
+  - [`syn.go`](https://github.com/Sch8ill/minescan/blob/master/sender/syn.go): SYN-Paketsendeprozess
+- [`sys`](https://github.com/Sch8ill/minescan/tree/master/sys):
+  - [`ip.go`](https://github.com/Sch8ill/minescan/blob/master/sys/ip.go): Lokale IP-Adresse
+  - [`iptables.go`](https://github.com/Sch8ill/minescan/blob/master/sys/iptables.go): Firewallbearbeitung
+  - [`socket.go`](https://github.com/Sch8ill/minescan/blob/master/sys/socket.go): Netzwerk-Socket
+- [`target`](https://github.com/Sch8ill/minescan/tree/master/target):
+  - [`exclude.go`](https://github.com/Sch8ill/minescan/blob/master/target/exclude.go): IP-Zieladressausnahmen
+  - [`target.go`](https://github.com/Sch8ill/minescan/blob/master/target/target.go): IP-Zieladressen-Quelle
+  - [`txt.go`](https://github.com/Sch8ill/minescan/blob/master/target/txt.go): IP-Zieladressen-Textquelle
